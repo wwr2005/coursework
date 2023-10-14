@@ -1,4 +1,8 @@
+import java.text.NumberFormat;
+
 public class Employee {
+
+    private static final NumberFormat NUMBER_FORMAT = NumberFormat.getCurrencyInstance();
 
     private String fullName;
     private int department;
@@ -8,7 +12,7 @@ public class Employee {
 
     public Employee(String fullName, int department, int salary) {
         this.fullName = fullName;
-        this.department =department;
+        this.department = department;
         this.salary = salary;
         this.id = counter++;
     }
@@ -35,5 +39,10 @@ public class Employee {
 
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return fullName + ", отдел:" + department + ", зарплата:" + NUMBER_FORMAT.format(salary);
     }
 }
